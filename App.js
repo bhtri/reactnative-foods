@@ -4,6 +4,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
+import { COLORS } from './contains';
+
 function HomeScreen() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -34,6 +36,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator
+      initialRouteName='Home'
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
@@ -41,18 +44,18 @@ export default function App() {
             switch (route.name) {
               case 'Home':
                 iconName = focused
-                  ? 'ios-information-circle'
-                  : 'ios-information-circle-outline';
+                  ? 'ios-home'
+                  : 'ios-home-outline';
                 break;
               case 'Seen':
                 iconName = focused
-                  ? 'ios-information-circle'
-                  : 'ios-information-circle-outline';
+                  ? 'ios-timer'
+                  : 'ios-timer-outline';
                 break;
               case 'Favorite':
                 iconName = focused
-                  ? 'ios-information-circle'
-                  : 'ios-information-circle-outline';
+                  ? 'ios-heart'
+                  : 'ios-heart-outline';
                 break;
               default:
                 break;
@@ -61,14 +64,22 @@ export default function App() {
             // You can return any component that you like here!
             return <Ionicons name={iconName} size={size} color={color} />;
           },
-          tabBarActiveTintColor: 'red',
-          tabBarInactiveTintColor: 'gray',
+          tabBarActiveTintColor: COLORS.second,
+          tabBarInactiveTintColor: COLORS.second,
+          tabBarStyle: {
+            backgroundColor: COLORS.primary,
+            height: 65,
+            paddingBottom: 10,
+          },
+          tabBarLabelStyle: {
+            fontSize: 13,
+          }
         })}
       >
 
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Seen" component={SeenScreen} />
-        <Tab.Screen name="Favorite" component={FavoriteScreen} />
+        <Tab.Screen name="Home" component={HomeScreen} options={{ title: 'Trang chu' }} />
+        <Tab.Screen name="Seen" component={SeenScreen} options={{ title: 'Da xem' }} />
+        <Tab.Screen name="Favorite" component={FavoriteScreen} options={{ title: 'Yeu thich' }} />
       </Tab.Navigator>
     </NavigationContainer>
   );
