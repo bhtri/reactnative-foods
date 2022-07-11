@@ -5,7 +5,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { COLORS } from '../contains';
 import HomeStackScreen from './HomeNavigation';
 import SeenStackScreen from './SeenNavigation';
-import FavoriteScreen from './FavoriteNavigation';
+import FavoriteStackScreen from './FavoriteNavigation';
 
 const Tab = createBottomTabNavigator();
 
@@ -56,7 +56,7 @@ export default MyTabs = () => {
 
             <Tab.Screen name="Home" component={HomeStackScreen} options={{ title: 'Trang chu' }} />
             <Tab.Screen name="Seen" component={SeenStackScreen} options={{ title: 'Da xem' }} />
-            <Tab.Screen name="Favorite" component={FavoriteScreen} options={{ title: 'Yeu thich' }} />
+            <Tab.Screen name="Favorite" component={FavoriteStackScreen} options={{ title: 'Yeu thich' }} />
         </Tab.Navigator>
     );
 }

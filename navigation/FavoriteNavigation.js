@@ -1,9 +1,21 @@
 import { Text, View } from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-export default function FavoriteScreen() {
+import { FavoriteScreen } from './../screens';
+
+const FavoriteStack = createStackNavigator();
+
+export default function FavoriteStackScreen() {
     return (
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Text>Favorite!</Text>
-        </View>
+        <FavoriteStack.Navigator
+            screenOptions={{
+                headerStyle: {
+                    backgroundColor: COLORS.primary,
+                },
+                headerTintColor: COLORS.second,
+            }}
+        >
+            <FavoriteStack.Screen name="FavoriteScreen" component={FavoriteScreen} options={{ title: 'Favorite Screen' }} />
+        </FavoriteStack.Navigator>
     );
 }
