@@ -11,7 +11,6 @@ const Tab = createBottomTabNavigator();
 
 export default MyTabs = () => {
     return (
-
         <Tab.Navigator
             initialRouteName='Home'
             screenOptions={({ route }) => ({
@@ -50,7 +49,8 @@ export default MyTabs = () => {
                 },
                 tabBarLabelStyle: {
                     fontSize: 13,
-                }
+                },
+                headerShown: false,
             })}
         >
 
