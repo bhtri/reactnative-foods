@@ -11,11 +11,4 @@ export default styles = StyleSheet.create({
         paddingTop: 24,
         backgroundColor: COLORS.background
     },
-    box: {
-        paddingHorizontal: 10,
-        paddingVertical: 10,
-        backgroundColor: '#deaf89',
-        borderRadius: 10,
-        marginBottom: 20,
-    },
 })

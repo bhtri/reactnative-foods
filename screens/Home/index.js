@@ -1,8 +1,8 @@
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View } from 'react-native'
 import React from 'react'
 
 import styles from './style'
-
+import { Category } from './../../components';
 
 export default function HomeScreen({ navigation }) {
 
@@ -12,9 +12,11 @@ export default function HomeScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={changeScreen} style={styles.box}>
-        <Text>Go to CategoryScreen</Text>
-      </TouchableOpacity>
+      <Category />
+      <Category />
+      <Category />
+      <Category />
+      <Category />
     </View>
   )
 }
