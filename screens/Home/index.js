@@ -3,9 +3,11 @@ import React from 'react'
 
 import styles from './style'
 
-export default function HomeScreen() {
-  const changeScreen = () => {
 
+export default function HomeScreen({ navigation }) {
+
+  const changeScreen = () => {
+    navigation.push('CategoryScreen', {});
   }
 
   return (
