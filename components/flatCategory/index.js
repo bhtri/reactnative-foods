@@ -17,7 +17,7 @@ export default function FlatCategory() {
                         <Icon name={'heart'} number={123} />
                     </View>
                     <View style={styles.icon}>
-                        <Icon name={'heart'} />
+                        <Icon name={'eye'} number={123} />
                     </View>
                 </View>
             </View>

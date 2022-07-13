@@ -1,11 +1,11 @@
 import { StyleSheet, Dimensions } from 'react-native';
 
 import { COLORS } from '../../contains'
-const height = Dimensions.get('window').height - 100
+const height = Dimensions.get('window').height - 180
 
 export default styles = StyleSheet.create({
     productWrap: {
-        height: height / 4,
+        height: height / 3,
         backgroundColor: COLORS.second,
         borderRadius: 20,
         alignItems: 'center',
