@@ -35,7 +35,8 @@ export default styles = StyleSheet.create({
         color: COLORS.title,
         marginBottom: 14,
         fontWeight: 'bold',
-        fontSize: 16
+        fontSize: 16,
+        textAlign: 'center'
     },
     icon: {
         marginRight: 20

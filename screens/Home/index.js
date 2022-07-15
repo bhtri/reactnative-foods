@@ -7,8 +7,19 @@ import { CATEGORIES } from '../../data';
 
 export default function HomeScreen({ navigation }) {
 
-  const changeScreen = () => {
-    navigation.push('CategoryScreen', {});
+  const renderGridCategory = ({ item }) => {
+    return (
+      <Category
+        title={item.title}
+        thumb={item.thumb}
+        onPress={() => {
+          navigation.push('CategoryScreen', {
+            categoryId: item.id,
+            categoryName: item.title,
+          });
+        }}
+      />
+    );
   }
 
   return (
@@ -16,7 +27,7 @@ export default function HomeScreen({ navigation }) {
       <FlatList
         data={CATEGORIES}
         numColumns={2}
-        renderItem={() => <Category />}
+        renderItem={renderGridCategory}
         keyExtractor={item => item.id}
       />
     </View>
