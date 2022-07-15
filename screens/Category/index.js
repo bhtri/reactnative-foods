@@ -15,6 +15,14 @@ export default function CategoryScreen({ navigation, route }) {
       <FlatCategory
         title={item.title}
         thumb={item.thumb}
+        view={item.view}
+        favorite={item.favorite}
+        onPress={() => {
+          navigation.push('ProductScreen', {
+            productId: item.id,
+            productName: item.title,
+          });
+        }}
       />
     )
   }

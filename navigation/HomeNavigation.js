@@ -16,8 +16,12 @@ export default function HomeStackScreen() {
       }}
     >
       <HomeStack.Screen name="HomeScreen" component={HomeScreen} options={{ title: 'Mon an' }} />
-      <HomeStack.Screen name="CategoryScreen" component={CategoryScreen} options={{ title: 'CategoryScreen' }} />
-      <HomeStack.Screen name="ProductScreen" component={ProductScreen} options={{ title: 'ProductScreen' }} />
+      <HomeStack.Screen name="CategoryScreen" component={CategoryScreen} options={({ route }) => ({
+        title: route.params.categoryName
+      })} />
+      <HomeStack.Screen name="ProductScreen" component={ProductScreen} options={({ route }) => ({
+        title: route.params.productName
+      })}/>
     </HomeStack.Navigator>
   );
 }
