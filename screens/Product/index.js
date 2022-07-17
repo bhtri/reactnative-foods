@@ -1,14 +1,21 @@
 import { View, Text, Image, ScrollView } from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 
 import styles from './style'
 import { Icon } from '../../components'
 import { PRODUCTS } from '../../data'
+import { addNewProductView } from '../../store/slices/viewed'
 
 export default function ProductScreen({ navigation, route }) {
+  const dispatch = useDispatch();
   const { productId, productName } = route.params
   const product = PRODUCTS.find(item => item.id === productId)
   const { id, categoryId, title, thumb, view, favorite, intro, ingredients, instructions } = product
+
+  useEffect(() => {
+    dispatch(addNewProductView({ id }));
+  }, []);
 
   return (
     <View style={styles.product}>
