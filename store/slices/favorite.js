@@ -7,7 +7,16 @@ export const favoriteSlice = createSlice({
     },
     reducers: {
         toggleFavorite: (state, action) => {
-            console.log('action', action)
+            const { id } = action.payload;
+            const item = state.items.find(item => item === id);
+            if (item) {
+                // delete
+                state.items = state.items.filter(item => item !== id);
+            } else {
+                // add new
+                state.items = [...new Set([id, ...state.items])];
+            }
+
             return state
         },
     },

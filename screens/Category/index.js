@@ -13,6 +13,7 @@ export default function CategoryScreen({ navigation, route }) {
   const renderGridCategory = ({ item }) => {
     return (
       <FlatCategory
+        id={item.id}
         title={item.title}
         thumb={item.thumb}
         view={item.view}
