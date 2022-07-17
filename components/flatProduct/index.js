@@ -1,18 +1,26 @@
 import React from 'react'
 import { View, Text, Image, TouchableOpacity } from 'react-native'
+import { useDispatch } from 'react-redux'
 
 import Icon from '../icon'
 import styles from './styles'
+import { removeProductFavorite } from '../../store/slices/favorite'
 
-export default FlatProduct = ({ heart }) => {
+export default FlatProduct = ({ id, heart, title, thumb }) => {
+    const dispatch = useDispatch();
+
+    const trashProduct = () => {
+        dispatch(removeProductFavorite({id: id}));
+    }
+
     return (
         <TouchableOpacity style={styles.productBox} >
             <View style={styles.product}>
                 <View style={styles.productBoxImage}>
-                    <Image style={styles.productImage} source={require('../../assets/images/wrapper.png')} />
+                    <Image style={styles.productImage} source={thumb} />
                 </View>
                 <View style={styles.productBoxTitle}>
-                    <Text style={styles.title}>Cillum tempor aute sint eli. tempor</Text>
+                    <Text style={styles.title}>{title}</Text>
                 </View>
             </View>
             <View style={styles.icon}>
@@ -23,9 +31,9 @@ export default FlatProduct = ({ heart }) => {
                         </View>)
                         : <View />
                 }
-                <View style={styles.iconBox}>
+                <TouchableOpacity onPress={trashProduct} style={styles.iconBox}>
                     <Icon name={'trash'} />
-                </View>
+                </TouchableOpacity>
             </View>
         </TouchableOpacity>
     )
