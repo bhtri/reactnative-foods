@@ -1,13 +1,22 @@
 import React from 'react'
 import { View, Text, Image, TouchableOpacity, Alert } from 'react-native'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import Icon from '../icon'
 import styles from './styles'
-import { removeProductFavorite } from '../../store/slices/favorite'
+import { removeProductFavorite, toggleFavorite } from '../../store/slices/favorite'
+import { removeProductView } from '../../store/slices/viewed'
 
 export default FlatProduct = ({ navigation, id, heart, title, thumb }) => {
     const dispatch = useDispatch();
+
+    const favorites     = useSelector((state) => state.favorite.items);
+    const isFavorite    = favorites.includes(id);
+    const iconFavorite  = isFavorite ? "heart" : "heart-o";
+
+    const onFavorite = () => {
+        dispatch(toggleFavorite({id}));
+    }
 
     const trashProduct = () => {
         Alert.alert(
@@ -20,7 +29,11 @@ export default FlatProduct = ({ navigation, id, heart, title, thumb }) => {
                 },
                 {
                     text: "OK",
-                    onPress: () => dispatch(removeProductFavorite({ id: id }))
+                    onPress: () => {
+                        heart
+                        ? dispatch(removeProductView({ id: id }))
+                        : dispatch(removeProductFavorite({ id: id }))
+                    }
                 }
             ]
         );
@@ -47,9 +60,9 @@ export default FlatProduct = ({ navigation, id, heart, title, thumb }) => {
             <View style={styles.icon}>
                 {
                     heart
-                        ? (<View style={styles.iconBox}>
-                            <Icon name={'heart'} />
-                        </View>)
+                        ? (<TouchableOpacity onPress={onFavorite}  style={styles.iconBox}>
+                            <Icon name={iconFavorite} />
+                        </TouchableOpacity>)
                         : <View />
                 }
                 <TouchableOpacity onPress={trashProduct} style={styles.iconBox}>
