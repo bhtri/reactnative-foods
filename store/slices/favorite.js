@@ -24,10 +24,13 @@ export const favoriteSlice = createSlice({
             state.items = state.items.filter(item => item !== id);
 
             return state
+        },
+        removeAllProduct : (state , action ) => {
+            state.items = []
         }
     },
 })
 
-export const { toggleFavorite, removeProductFavorite } = favoriteSlice.actions
+export const { toggleFavorite, removeProductFavorite, removeAllProduct } = favoriteSlice.actions
 
 export default favoriteSlice.reducer
